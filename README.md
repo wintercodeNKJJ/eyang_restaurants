@@ -1,36 +1,162 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Here’s a complete `README.md` for your **Eyang Restaurants** Next.js project based on the structure in the screenshot:
 
-## Getting Started
+---
 
-First, run the development server:
+# **Eyang Restaurants**
+
+A modern restaurant web application built using **Next.js 13+ (App Router)**, TypeScript, and a modular folder structure. The app supports booking, dish ordering, and user management.
+
+---
+
+## 🚀 Getting Started
+
+### ✅ **Requirements**
+
+- Node.js >= 18.x
+- npm or yarn
+
+### 🔧 **Installation**
+
+```bash
+git clone https://your-repo-url/eyang-restaurants.git
+cd eyang-restaurants
+npm install
+```
+
+### ▶️ **Start Development Server**
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit: [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🗂️ Project Folder Structure
 
-## Learn More
+```
+eyang_restaurants/
+│
+├── app/                    # Main app directory using App Router
+│   ├── api/                # API routes
+│   │   ├── category/       # Endpoints for dish categories
+│   │   ├── dish/           # Endpoints for dishes
+│   │   ├── newsLetter/     # Newsletter subscriptions
+│   │   ├── order/          # Orders CRUD
+│   │   ├── reservation/    # Reservation management
+│   │   ├── restaurant/     # Restaurant info APIs
+│   │   └── user/           # User management and auth
+│   ├── menu/               # Routes for the public menu
+│   ├── globals.css         # Global styles
+│   ├── layout.tsx          # App layout shell (shared layout, nav, etc.)
+│   └── page.tsx            # Root homepage
+│
+├── components/             # Reusable UI components (e.g., buttons, modals)
+│
+├── font/                   # Custom font imports if any
+│
+├── public/
+│   └── dish/               # Static dish images
+│       ├── food1.webp
+│       └── food2.webp
+│
+├── providers/              # React context providers
+│   ├── datastore.tsx       # Shared state (e.g., cart, user info)
+│   ├── notifications.tsx   # Toast or message notifications
+│   └── queryProvider.tsx   # React Query setup (data fetching)
+│
+├── queries/                # TRPC/React-query logic (if used)
+│
+├── types/                  # TypeScript type definitions for all entities
+│
+├── .env                    # Environment variables
+├── next.config.ts          # Next.js configuration
+├── tsconfig.json           # TypeScript configuration
+├── package.json            # Project metadata & scripts
+└── README.md               # Project overview and usage
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🛠️ How to Implement UI Components
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 🔹 In `/app/`
 
-## Deploy on Vercel
+- This is where you create pages and routes.
+- Create a new folder inside `/app/` with a `page.tsx` file to define a new route.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Example: `app/about/page.tsx`**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```tsx
+import AboutSection from "@/components/AboutSection";
+
+export default function AboutPage() {
+  return (
+    <main>
+      <h1>About Us</h1>
+      <AboutSection />
+    </main>
+  );
+}
+```
+
+### 🔹 In `/components/`
+
+- This is where you store **reusable UI components** (e.g., `<DishCard />`, `<Navbar />`, `<TableSelector />`).
+
+**Example: Create a reusable DishCard**
+
+```tsx
+// components/DishCard.tsx
+import { Dish } from "@/types";
+
+export default function DishCard({ dish }: { dish: Dish }) {
+  return (
+    <div className="border p-4 rounded">
+      <img src={`/dish/${dish.imageUrl}`} alt={dish.name} className="w-full" />
+      <h3>{dish.name}</h3>
+      <p>{dish.description}</p>
+      <p>${dish.price.toFixed(2)}</p>
+    </div>
+  );
+}
+```
+
+**Usage in a page**
+
+```tsx
+import DishCard from "@/components/DishCard";
+
+<DishCard dish={dishData} />;
+```
+
+---
+
+## 📦 Environment Variables
+
+Add your `.env` file at the root for any necessary credentials (e.g., DB, APIs):
+
+```
+DATABASE_URL=...
+NEXT_PUBLIC_API_BASE_URL=...
+```
+
+---
+
+## ✅ Additional Tips
+
+- Use `/providers/datastore.tsx` for managing global state like cart or auth.
+- Use `/types/` to define and extend models for maintainability.
+- You can add more folders inside `/app/` to organize routes logically (e.g., `/dashboard/`, `/admin/`).
+- Store static content in `/public/` and access them like: `/dish/food1.webp`.
+
+---
+
+## 📄 License
+
+This project is open-source and can be adapted freely.
+
+---
+
+Would you like me to auto-generate this as a downloadable `README.md` file for your repo?
