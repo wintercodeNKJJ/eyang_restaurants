@@ -50,7 +50,7 @@ const Footer = () => {
             "Password",
             "Protected",
           ].map((link, index) => (
-            <li>
+            <li key={index}>
               <MyNavButton title={link} key={index} footer={true} />
             </li>
           ))}
