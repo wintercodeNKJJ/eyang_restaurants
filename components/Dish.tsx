@@ -18,6 +18,7 @@ import { Dish as DishT } from "@/types/dataTypes";
 
 const Dish = ({
   name,
+  slug,
   description,
   price,
   offer,
@@ -56,7 +57,7 @@ const Dish = ({
         </div>
         <p className="text-[var(--secondary)]">{description}</p>
         <div className="flex gap-4 w-full justify-end">
-          <IconButton title="view more" />
+          <IconButton title="view more" link={`/menu/${slug}`} />
           <IconButton title="add to cart" state="white" />
         </div>
       </div>

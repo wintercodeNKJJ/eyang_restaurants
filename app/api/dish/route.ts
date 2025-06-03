@@ -5,6 +5,7 @@ const dish: Dish[] = [
   {
     id: 1,
     name: "Grilled Chicken",
+    slug: "Grilled_Chicken",
     description: "Juicy grilled chicken with herbs",
     price: 12.99,
     imageUrl: "/img/chicken.jpg",
@@ -16,6 +17,7 @@ const dish: Dish[] = [
   {
     id: 2,
     name: "Caesar Salad",
+    slug: "Caesar_Salad",
     description: "Crispy lettuce with Caesar dressing",
     price: 7.5,
     imageUrl: "/img/salad.jpg",
@@ -27,6 +29,7 @@ const dish: Dish[] = [
   {
     id: 3,
     name: "Chocolate Cake",
+    slug: "Chocolate_Cake",
     description: "Rich chocolate cake slice",
     price: 5.0,
     imageUrl: "/img/cake.jpg",
@@ -38,6 +41,7 @@ const dish: Dish[] = [
   {
     id: 4,
     name: "Lemonade",
+    slug: "Lemonade",
     description: "Refreshing lemon drink",
     price: 3.0,
     imageUrl: "/img/lemonade.jpg",
@@ -49,6 +53,7 @@ const dish: Dish[] = [
   {
     id: 5,
     name: "Garlic Bread",
+    slug: "Garlic_Bread",
     description: "Toasted bread with garlic and butter",
     price: 4.5,
     imageUrl: "/img/garlicbread.jpg",
