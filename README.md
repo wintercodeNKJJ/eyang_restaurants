@@ -1,7 +1,3 @@
-Here’s a complete `README.md` for your **Eyang Restaurants** Next.js project based on the structure in the screenshot:
-
----
-
 # **Eyang Restaurants**
 
 A modern restaurant web application built using **Next.js 13+ (App Router)**, TypeScript, and a modular folder structure. The app supports booking, dish ordering, and user management.
@@ -156,7 +152,3 @@ NEXT_PUBLIC_API_BASE_URL=...
 ## 📄 License
 
 This project is open-source and can be adapted freely.
-
----
-
-Would you like me to auto-generate this as a downloadable `README.md` file for your repo?
