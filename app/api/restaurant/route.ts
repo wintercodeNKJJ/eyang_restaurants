@@ -1,0 +1,98 @@
+import { Restaurant } from "@/types/dataTypes";
+import { NextRequest, NextResponse } from "next/server";
+
+const restaurant: Restaurant[] = [
+  {
+    id: 1,
+    name: "The Gourmet Spot",
+    address: "123 Foodie Lane, Flavor Town",
+    phone: "+1234567890",
+    email: "info@gourmetspot.com",
+    openingHours: [
+      { day: "Monday", open: "08:00", close: "22:00" },
+      { day: "Tuesday", open: "08:00", close: "22:00" },
+      { day: "Wednesday", open: "08:00", close: "22:00" },
+      { day: "Thursday", open: "08:00", close: "22:00" },
+      { day: "Friday", open: "08:00", close: "23:00" },
+      { day: "Saturday", open: "09:00", close: "23:00" },
+      { day: "Sunday", open: "09:00", close: "21:00" },
+    ],
+    logoUrl: "/img/logo.png",
+    about: "A modern restaurant serving delicious global cuisine.",
+    dishes: [
+      {
+        id: 1,
+        name: "Grilled Chicken",
+        description: "Juicy grilled chicken with herbs",
+        price: 12.99,
+        imageUrl: "/img/chicken.jpg",
+        categoryId: 2,
+        isAvailable: true,
+        tags: ["protein", "grilled"],
+        preparationTime: 20,
+      },
+      {
+        id: 2,
+        name: "Caesar Salad",
+        price: 7.5,
+        categoryId: 5,
+        isAvailable: true,
+        tags: ["vegetarian"],
+        preparationTime: 10,
+      },
+      {
+        id: 3,
+        name: "Chocolate Cake",
+        price: 5.0,
+        categoryId: 3,
+        isAvailable: true,
+        tags: ["sweet"],
+        preparationTime: 5,
+      },
+      {
+        id: 4,
+        name: "Lemonade",
+        price: 3.0,
+        categoryId: 4,
+        isAvailable: true,
+        tags: ["drink"],
+        preparationTime: 2,
+      },
+      {
+        id: 5,
+        name: "Garlic Bread",
+        price: 4.5,
+        categoryId: 1,
+        isAvailable: true,
+        tags: ["starter"],
+        preparationTime: 8,
+      },
+    ],
+    tables: [
+      {
+        number: 1,
+        seats: 4,
+        isAvailable: true,
+        locationDescription: "Near window",
+      },
+      {
+        number: 2,
+        seats: 2,
+        isAvailable: false,
+        locationDescription: "Corner booth",
+      },
+      {
+        number: 3,
+        seats: 6,
+        isAvailable: true,
+        locationDescription: "Center floor",
+      },
+      { number: 4, seats: 4, isAvailable: true },
+      { number: 5, seats: 2, isAvailable: true },
+    ],
+  },
+];
+export async function GET(request: NextRequest) {
+  console.log(request);
+  return NextResponse.json(restaurant);
+}
