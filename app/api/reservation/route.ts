@@ -15,6 +15,5 @@ const reservations: Reservation[] = [
 ];
 
 export async function GET(request: NextRequest) {
-  console.log(request);
   return NextResponse.json(reservations);
 }

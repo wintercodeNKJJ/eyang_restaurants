@@ -11,6 +11,7 @@ export interface Dish {
   special?: boolean;
   tags?: string[]; // e.g., ['vegan', 'spicy']
   preparationTime?: number; // in minutes
+  restaurantId: number;
 }
 
 export interface Category {

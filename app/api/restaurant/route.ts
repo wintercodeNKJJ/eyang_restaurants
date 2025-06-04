@@ -23,6 +23,7 @@ const restaurant: Restaurant[] = [
       {
         id: 1,
         name: "Grilled Chicken",
+        slug: "Grilled_Chicken",
         description: "Juicy grilled chicken with herbs",
         price: 12.99,
         imageUrl: "/img/chicken.jpg",
@@ -30,42 +31,51 @@ const restaurant: Restaurant[] = [
         isAvailable: true,
         tags: ["protein", "grilled"],
         preparationTime: 20,
+        restaurantId: 10,
       },
       {
         id: 2,
         name: "Caesar Salad",
+        slug: "Caesar_Salad",
         price: 7.5,
         categoryId: 5,
         isAvailable: true,
         tags: ["vegetarian"],
         preparationTime: 10,
+        restaurantId: 10,
       },
       {
         id: 3,
         name: "Chocolate Cake",
+        slug: "Chocolate_Cake",
         price: 5.0,
         categoryId: 3,
         isAvailable: true,
         tags: ["sweet"],
         preparationTime: 5,
+        restaurantId: 1,
       },
       {
         id: 4,
         name: "Lemonade",
+        slug: "Lemonade",
         price: 3.0,
         categoryId: 4,
         isAvailable: true,
         tags: ["drink"],
         preparationTime: 2,
+        restaurantId: 1,
       },
       {
         id: 5,
         name: "Garlic Bread",
+        slug: "Garlic_Bread",
         price: 4.5,
         categoryId: 1,
         isAvailable: true,
         tags: ["starter"],
         preparationTime: 8,
+        restaurantId: 1,
       },
     ],
     tables: [
@@ -93,6 +103,5 @@ const restaurant: Restaurant[] = [
   },
 ];
 export async function GET(request: NextRequest) {
-  console.log(request);
   return NextResponse.json(restaurant);
 }

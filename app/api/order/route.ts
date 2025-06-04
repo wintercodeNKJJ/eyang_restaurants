@@ -11,9 +11,11 @@ const orders: Order[] = [
         dish: {
           id: 1,
           name: "Grilled Chicken",
+          slug: "Grilled_Chicken",
           price: 12.99,
           categoryId: 2,
           isAvailable: true,
+          restaurantId: 2,
         },
         quantity: 2,
         notes: "No onions",
@@ -22,9 +24,11 @@ const orders: Order[] = [
         dish: {
           id: 2,
           name: "Caesar Salad",
+          slug: "Caesar_Salad",
           price: 7.5,
           categoryId: 5,
           isAvailable: true,
+          restaurantId: 3,
         },
         quantity: 1,
       },
@@ -32,9 +36,11 @@ const orders: Order[] = [
         dish: {
           id: 3,
           name: "Chocolate Cake",
+          slug: "Chocolate_Cake",
           price: 5.0,
           categoryId: 3,
           isAvailable: true,
+          restaurantId: 3,
         },
         quantity: 1,
         notes: "Extra cream",
@@ -43,9 +49,11 @@ const orders: Order[] = [
         dish: {
           id: 4,
           name: "Lemonade",
+          slug: "Lemonade",
           price: 3.0,
           categoryId: 4,
           isAvailable: true,
+          restaurantId: 1,
         },
         quantity: 3,
       },
@@ -53,9 +61,11 @@ const orders: Order[] = [
         dish: {
           id: 5,
           name: "Garlic Bread",
+          slug: "Garlic_Bread",
           price: 4.5,
           categoryId: 1,
           isAvailable: true,
+          restaurantId: 2,
         },
         quantity: 2,
       },
@@ -69,6 +79,5 @@ const orders: Order[] = [
   },
 ];
 export async function GET(request: NextRequest) {
-  console.log(request);
   return NextResponse.json(orders);
 }
