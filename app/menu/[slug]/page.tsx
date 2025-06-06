@@ -9,7 +9,7 @@ interface dishDetailsPageProps {
 const Page = async ({ params }: dishDetailsPageProps) => {
   const { slug } = await params;
   return (
-    <div>
+    <div className="w-full">
       <Content slug={slug} />
     </div>
   );

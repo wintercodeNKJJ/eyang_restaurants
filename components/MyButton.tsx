@@ -22,7 +22,7 @@ const MyButton = ({ state, title, link }: ButtonProps) => {
     >
       {link ? (
         <Link href={link}>
-          <p>{title}</p>
+          <p className="text-nowrap">{title}</p>
         </Link>
       ) : (
         <p>{title}</p>

@@ -19,7 +19,7 @@ const Dish = (dish: DishT) => {
   return (
     <div
       className={clsx(
-        "flex gap-6 items-center px-6 py-5 relative max-w-[500px] lg:max-w-none hover:bg-[var(--primary)]/10 rounded-3xl",
+        "flex gap-6 items-center px-6 py-5 relative lg:max-w-none hover:bg-[var(--primary)]/10 rounded-3xl",
         special == true ? "border border-[var(--primary)]" : ""
       )}
     >

@@ -16,14 +16,14 @@ const DishDetails = (data: Dish) => {
   return (
     <div
       className={clsx(
-        "flex flex-col gap-6 items-center p-6 relative max-w-[500px] hover:bg-[var(--primary)]/10 rounded-3xl",
+        "flex flex-col gap-6 items-center p-12 relative hover:bg-[var(--primary)]/10 rounded-3xl",
         data.special == true ? "border border-[var(--primary)]" : ""
       )}
     >
       <img
         src={data.imageUrl}
         alt="dish"
-        className="w-full h-40 object-cover rounded-xl bg-gray-200"
+        className="w-full h-[300px] object-cover rounded-xl bg-gray-200"
       />
       <div className="flex flex-col gap-4 w-full">
         <div className="flex gap-2">
