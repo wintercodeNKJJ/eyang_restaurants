@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import Link from "next/link";
 import React from "react";
-import {} from "@phosphor-icons/react";
+import { ShoppingCartIcon } from "@phosphor-icons/react";
 import {
   ArrowLineRightIcon,
   ArrowRightIcon,
@@ -11,9 +11,10 @@ type ButtonProps = {
   state?: "white" | "outline";
   title: string;
   link?: string;
+  icon?: "cart";
 };
 
-const IconButton = ({ state, title, link }: ButtonProps) => {
+const IconButton = ({ state, title, link, icon }: ButtonProps) => {
   return (
     <div
       className={clsx(
@@ -28,24 +29,34 @@ const IconButton = ({ state, title, link }: ButtonProps) => {
           <Link href={link}>
             <p className="text-nowrap">{title}</p>
           </Link>
-          <ArrowRightIcon
-            size={24}
-            className={clsx(
-              "px-1 bg-[var(--background)] border rounded-full",
-              state === "white" ? "text-[var(--primary)]" : ""
-            )}
-          />
+          {icon === "cart" ? (
+            <ShoppingCartIcon size={24} />
+          ) : (
+            <ArrowRightIcon
+              size={24}
+              className={clsx(
+                "px-1 bg-[var(--background)] border rounded-full",
+                state === "white" ? "text-[var(--primary)]" : ""
+              )}
+            />
+          )}
         </>
       ) : (
         <>
           <p className="text-nowrap">{title}</p>
-          <ArrowRightIcon
-            size={24}
-            className={clsx(
-              "px-1 bg-[var(--background)] border rounded-full",
-              state === "white" ? "text-[var(--primary)]" : ""
-            )}
-          />
+          {icon === "cart" ? (
+            <span>
+              <ShoppingCartIcon size={24} />
+            </span>
+          ) : (
+            <ArrowRightIcon
+              size={24}
+              className={clsx(
+                "px-1 bg-[var(--background)] border rounded-full",
+                state === "white" ? "text-[var(--primary)]" : ""
+              )}
+            />
+          )}
         </>
       )}
     </div>

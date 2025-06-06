@@ -6,12 +6,21 @@ import {
   MinusCircleIcon,
   PlusCircleIcon,
   ShoppingCartIcon,
+  TrashIcon,
   XCircleIcon,
 } from "@phosphor-icons/react";
+import { XIcon } from "@phosphor-icons/react/dist/ssr";
 
 export default function CartModal() {
-  const { isOpen, closeCart, cart, incrementItem, decrementItem, getTotal } =
-    useStore();
+  const {
+    isOpen,
+    closeCart,
+    cart,
+    incrementItem,
+    decrementItem,
+    getTotal,
+    removeItem,
+  } = useStore();
 
   if (!isOpen) return null;
 
@@ -19,7 +28,7 @@ export default function CartModal() {
 
   return (
     <div className="fixed inset-0 bg-black/60 z-50 flex justify-center items-center">
-      <div className="bg-white/80 text-black rounded-lg shadow-lg w-full max-w-2xl p-6 overflow-y-auto max-h-[90vh] relative">
+      <div className="bg-white/80 text-black rounded-2xl shadow-lg w-full max-w-2xl p-6 overflow-y-auto max-h-[90vh] relative">
         <button
           onClick={closeCart}
           className="absolute top-3 right-3 text-xl font-bold hover:text-red-500"
@@ -36,7 +45,7 @@ export default function CartModal() {
           <div className="space-y-4">
             {cart.map((item) => (
               <div key={item.dish.id} className="border-b pb-3">
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between items-center relative">
                   <div className="flex gap-2 items-center">
                     <img
                       src={item.dish.imageUrl}
@@ -58,7 +67,13 @@ export default function CartModal() {
                       </div>
                     </div>
                   </div>
-                  <div className="text-right">
+                  <div>
+                    <button
+                      className="ml-4 text-red-600 text-sm underline absolute top-0 right-0"
+                      onClick={() => removeItem(item.dish.id)}
+                    >
+                      <XIcon size={20} color="red" />
+                    </button>
                     <p>{item.dish.price * item.quantity} FCFA</p>
                   </div>
                 </div>

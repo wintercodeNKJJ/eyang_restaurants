@@ -30,28 +30,19 @@ export default function Home() {
   }
 
   return (
-    <main className="flex flex-col w-full h-screen gap-20 relative overflow-y-scroll">
-      <ul className="flex gap-4 items-center justify-center p-8 z-10 h-[50px] w-full sticky top-0 bg-black">
-        <li>
-          <h6>
-            <a href="#id">Starters</a>
-          </h6>
-        </li>
-        <li>
-          <h6>
-            <a href="#id">Breakfast</a>
-          </h6>
-        </li>
-        <li>
-          <h6>
-            <a href="#id">Lunch</a>
-          </h6>
-        </li>
-        <li>
-          <h6>
-            <a href="#id">Drinks</a>
-          </h6>
-        </li>
+    <main className="flex flex-col w-full h-screen relative overflow-y-scroll">
+      <ul className="flex overflow-x-auto gap-4 items-center justify-center p-4 z-10 min-h-[70px] w-full sticky top-0 bg-black">
+        {dishesData.isSuccess
+          ? Object.entries(groupedDishes()).map(([restaurantId, dishes]) => (
+              <li key={restaurantId}>
+                <h6>
+                  <a href={`#${restaurantId}`} className="text-nowrap">
+                    Restaurant {restaurantId}
+                  </a>
+                </h6>
+              </li>
+            ))
+          : ""}
       </ul>
 
       <div className="w-full p-6">
@@ -59,7 +50,7 @@ export default function Home() {
           {dishesData.isSuccess ? (
             Object.entries(groupedDishes()).map(([restaurantId, dishes]) => (
               <div key={restaurantId}>
-                <h2>Restaurant ID: {restaurantId}</h2>
+                <h2 id={`${restaurantId}`}>Restaurant ID: {restaurantId}</h2>
                 {dishes.map((dish, index) => (
                   <Dish {...dish} key={index} />
                 ))}

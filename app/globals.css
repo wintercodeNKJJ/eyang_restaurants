@@ -44,6 +44,9 @@
     --foreground: #ededed;
   }
 } */
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   /* background: linear-gradient(180deg, #0E1C36 0%, #000000 100%); */
@@ -105,4 +108,32 @@ h1,h2,h3,h4,h5,h6 {
   a{
     @apply hover:text-[var(--primary)]
   }
+}
+
+/* scrool bar */
+/* Works for Chromium and Firefox */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f0f0f048; /* Track background */
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary); /* Thumb color */
+  border-radius: 8px;
+  border: 2px solid #9b9b9b38; /* Adds padding around thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* On hover */
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) #9b9b9b38;
 }

@@ -8,6 +8,7 @@ import {
   Restaurant,
   User,
 } from "@/types/dataTypes";
+import { toast } from "react-toastify";
 import { create } from "zustand";
 
 type Store = {
@@ -81,6 +82,7 @@ export const useStore = create<Store>()((set, get) => ({
     } else {
       set({ cart: [...cart, { ...item, quantity: 1 }] });
     }
+    toast.success(`Added ${item.dish.name} to cart`);
   },
 
   removeItem: (id) => set({ cart: get().cart.filter((x) => x.dish.id !== id) }),

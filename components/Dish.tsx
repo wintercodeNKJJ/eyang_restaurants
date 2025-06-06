@@ -58,7 +58,7 @@ const Dish = (dish: DishT) => {
               })
             }
           >
-            <IconButton title="add to cart" state="white" />
+            <IconButton title="To Cart" state="white" icon="cart" />
           </span>
         </div>
       </div>

@@ -1,12 +1,13 @@
 "use client";
 import React from "react";
 import MyButton from "../MyButton";
-import { ListIcon } from "@phosphor-icons/react";
+import { ListIcon, StorefrontIcon } from "@phosphor-icons/react";
 import {
   ShoppingCartIcon,
   UserCircleIcon,
 } from "@phosphor-icons/react/dist/ssr";
 import { useStore } from "@/providers/datastore";
+import Link from "next/link";
 
 const NavBar = () => {
   const toggleCart = useStore((s) => s.toggleCart);
@@ -24,7 +25,9 @@ const NavBar = () => {
       </i>
       <MyButton link="/menu" title="Menu" state="selected" />
       <MyButton link="/restaurant" title="restaurants" state="selected" />
-      <MyButton link="/book" title="Book a table" state="black" />
+      <Link href={"/"} className="p-2 cursor-pointer bg-black rounded-full">
+        <StorefrontIcon size={24} />
+      </Link>
     </nav>
   );
 };
