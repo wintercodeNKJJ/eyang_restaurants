@@ -12,7 +12,7 @@ const MyButton = ({ state, title, link }: ButtonProps) => {
   return (
     <div
       className={clsx(
-        "px-4 py-3 rounded-full",
+        "px-4 py-3 rounded-full h-fit",
         state === "selected"
           ? "bg-[#f1f1f1] text-black"
           : state === "black"

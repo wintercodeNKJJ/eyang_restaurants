@@ -1,92 +1,94 @@
+"use client";
 import clsx from "clsx";
 import React from "react";
 import IconButton from "./IconButton";
+import { Dish } from "@/types/dataTypes";
+import {
+  MinusCircleIcon,
+  MinusIcon,
+  PlusCircleIcon,
+  PlusIcon,
+} from "@phosphor-icons/react";
+import { useStore } from "@/providers/datastore";
 
-type DishProps = {
-  title: string;
-  desc: string;
-  price: string;
-  offer?: string;
-  special?: boolean;
-  img?: string;
-  link: string;
-  restaurant: {
-    title: string;
-    img: string;
-    phone: string;
-  };
-  qty: number;
-};
-
-const DishDetails = ({
-  title,
-  desc,
-  price,
-  offer,
-  special = false,
-  restaurant,
-  qty,
-}: DishProps) => {
+const DishDetails = (data: Dish) => {
+  const addItem = useStore((state) => state.addItem);
   return (
     <div
       className={clsx(
         "flex flex-col gap-6 items-center p-6 relative max-w-[500px] hover:bg-[var(--primary)]/10 rounded-3xl",
-        special == true ? "border border-[var(--primary)]" : ""
+        data.special == true ? "border border-[var(--primary)]" : ""
       )}
     >
       <img
-        src="/"
+        src={data.imageUrl}
         alt="dish"
         className="w-full h-40 object-cover rounded-xl bg-gray-200"
       />
       <div className="flex flex-col gap-4 w-full">
         <div className="flex gap-2">
           <img
-            src={restaurant.img}
-            alt={restaurant.title}
+            src={data.imageUrl}
+            alt={data.name}
             className="w-8 h-8 rounded-full bg-gray-200"
           />
           <div className="flex flex-col gap-1">
-            <p>{restaurant.title}</p>
+            <p>{data.name}</p>
             <small>
-              <a href={`tel:+${restaurant.phone}`}>{restaurant.phone}</a>
+              <a href={`tel:+${data.restaurantId}`}>{data.restaurantId}</a>
             </small>
           </div>
         </div>
         <div className="flex justify-between items-center">
-          <h5>{title}</h5>
+          <h5>{data.name}</h5>
           <span className="flex gap-2">
-            {offer ? (
+            {data.offer ? (
               <>
                 <p className=" line-through text-[var(--secondary)]">
-                  {price} XAF
+                  {data.price} XAF
                 </p>
-                <p>{offer} XAF</p>
+                <p>{data.offer} XAF</p>
               </>
             ) : (
               <>
-                <p>{price}XAF</p>
+                <p>{data.price}XAF</p>
               </>
             )}
           </span>
         </div>
-        <p className="text-[var(--secondary)]">{desc}</p>
+        <p className="text-[var(--secondary)]">{data.description}</p>
         <div className="flex gap-4 w-full justify-between">
-          <div className="flex gap-2 items-center">
-            <p className="px-2 py-1 outline rounded-lg">+</p>
-            <p className="w-6 text-center">{qty}</p>
-            <p className="px-2 py-1 outline rounded-lg">-</p>
+          <div className="flex gap-1 items-center">
+            <p>
+              <PlusCircleIcon size={32} />
+            </p>
+            <p className="w-6 text-center">{0}</p>
+            <p>
+              <MinusCircleIcon size={32} />
+            </p>
           </div>
           <div className="flex gap-4 h-fit">
             <IconButton title="view more" />
-            <IconButton title="add to cart" state="white" />
+            <span
+              className="cursor-pointer"
+              onClick={() =>
+                addItem({
+                  dish: data,
+                  notes: "",
+                })
+              }
+            >
+              <IconButton title="add to cart" state="white" />
+            </span>
           </div>
         </div>
       </div>
-      {special && (
+      {data.special ? (
         <p className=" absolute -top-4 right-6 bg-[var(--primary)] text-black p-2 rounded-lg">
           Starter of the Day
         </p>
+      ) : (
+        ""
       )}
     </div>
   );

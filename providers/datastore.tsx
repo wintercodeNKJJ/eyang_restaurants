@@ -1,4 +1,5 @@
 import {
+  CartItem,
   Category,
   Dish,
   NewsLetter,
@@ -24,12 +25,24 @@ type Store = {
   setCategories: (categories: Category[]) => void;
   orders: Order[];
   setOrders: (order: Order[]) => void;
-  card: Order | null;
-  setCard: (card: Order) => void;
   resetUser: () => void;
+
+  isOpen: boolean;
+  cart: CartItem[];
+  openCart: () => void;
+  closeCart: () => void;
+  toggleCart: () => void;
+
+  addItem: (item: Omit<CartItem, "quantity">) => void;
+  removeItem: (id: number) => void;
+  incrementItem: (id: number) => void;
+  decrementItem: (id: number) => void;
+  getTotal: () => number;
+
+  setCart: (cart: CartItem[]) => void;
 };
 
-export const useStore = create<Store>()((set) => ({
+export const useStore = create<Store>()((set, get) => ({
   user: null,
   setUser: (user) => set(() => ({ user })),
   newsLetter: [],
@@ -44,10 +57,55 @@ export const useStore = create<Store>()((set) => ({
   setCategories: (categories) => set(() => ({ categories })),
   orders: [],
   setOrders: (orders) => set(() => ({ orders })),
-  card: null,
-  setCard: (card) => set(() => ({ card })),
   resetUser: () =>
     set(() => ({
       user: null,
     })),
+
+  isOpen: false,
+  cart: [],
+
+  openCart: () => set({ isOpen: true }),
+  closeCart: () => set({ isOpen: false }),
+  toggleCart: () => set((state) => ({ isOpen: !state.isOpen })),
+
+  addItem: (item) => {
+    const { cart } = get();
+    const existing = cart.find((x) => x.dish.id === item.dish.id);
+    if (existing) {
+      set({
+        cart: cart.map((x) =>
+          x.dish.id === item.dish.id ? { ...x, quantity: x.quantity + 1 } : x
+        ),
+      });
+    } else {
+      set({ cart: [...cart, { ...item, quantity: 1 }] });
+    }
+  },
+
+  removeItem: (id) => set({ cart: get().cart.filter((x) => x.dish.id !== id) }),
+
+  incrementItem: (id) =>
+    set({
+      cart: get().cart.map((x) =>
+        x.dish.id === id ? { ...x, quantity: x.quantity + 1 } : x
+      ),
+    }),
+
+  decrementItem: (id) =>
+    set({
+      cart: get()
+        .cart.map((x) =>
+          x.dish.id === id ? { ...x, quantity: x.quantity - 1 } : x
+        )
+        .filter((x) => x.quantity > 0),
+    }),
+
+  getTotal: () =>
+    get().cart.reduce(
+      (total, item) => total + item.dish.price * item.quantity,
+      0
+    ),
+
+  setCart: (cart) => set(() => ({ cart })),
 }));

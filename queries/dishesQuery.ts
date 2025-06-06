@@ -19,9 +19,13 @@ export class DishesQuery {
       });
   };
 
-  getOneDish = async (id: number): Promise<Dish> => {
+  getDish = async (data: { id?: number; slug?: string }): Promise<Dish> => {
     return axios
-      .get(`${process.env.NEXT_PUBLIC_API}/dish/${id}`)
+      .get(
+        `${process.env.NEXT_PUBLIC_API}/dish?id=${data.id ?? ""}&slug=${
+          data.slug ?? ""
+        }`
+      )
       .then((response) => {
         return response.data;
       })

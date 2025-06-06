@@ -46,7 +46,8 @@
 } */
 
 body {
-  background: linear-gradient(180deg, #0E1C36 0%, #000000 100%);
+  /* background: linear-gradient(180deg, #0E1C36 0%, #000000 100%); */
+  background: black;
   color: var(--foreground);
   font-family: var(--font-urbanist);
   line-height: var(--line-height);

@@ -1,30 +1,21 @@
+"use client";
 import clsx from "clsx";
 import React from "react";
 import IconButton from "./IconButton";
 import { Dish as DishT } from "@/types/dataTypes";
+import { useStore } from "@/providers/datastore";
 
-/**
- * 
- *   id: number;
-  name: string;
-  description?: string;
-  price: number;
-  imageUrl?: string;
-  categoryId: number;
-  isAvailable: boolean;
-  tags?: string[]; // e.g., ['vegan', 'spicy']
-  preparationTime?: number; // in minutes 
- */
-
-const Dish = ({
-  name,
-  slug,
-  description,
-  price,
-  offer,
-  special = false,
-  imageUrl,
-}: DishT) => {
+const Dish = (dish: DishT) => {
+  const {
+    name,
+    slug,
+    description,
+    price,
+    offer,
+    special = false,
+    imageUrl,
+  } = dish;
+  const addItem = useStore((state) => state.addItem);
   return (
     <div
       className={clsx(
@@ -58,7 +49,17 @@ const Dish = ({
         <p className="text-[var(--secondary)]">{description}</p>
         <div className="flex gap-4 w-full justify-end">
           <IconButton title="view more" link={`/menu/${slug}`} />
-          <IconButton title="add to cart" state="white" />
+          <span
+            className="cursor-pointer"
+            onClick={() =>
+              addItem({
+                dish: dish,
+                notes: "",
+              })
+            }
+          >
+            <IconButton title="add to cart" state="white" />
+          </span>
         </div>
       </div>
       {special && (

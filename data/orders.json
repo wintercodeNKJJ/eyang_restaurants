@@ -1,0 +1,39 @@
+{
+  "orders": [
+    {
+      "id": 1,
+      "userId": 2,
+      "tableNumber": 4,
+      "items": [
+        {
+          "dishId": 1,
+          "quantity": 2,
+          "notes": "No onions"
+        },
+        {
+          "dishId": 5,
+          "quantity": 1
+        },
+        {
+          "dishId": 4,
+          "quantity": 1,
+          "notes": "Extra cream"
+        },
+        {
+          "dishId": 2,
+          "quantity": 3
+        },
+        {
+          "dishId": 3,
+          "quantity": 2
+        }
+      ],
+      "totalAmount": 41.98,
+      "status": "preparing",
+      "createdAt": "2024-07-01T12:00:00Z",
+      "updatedAt": "2024-07-01T12:20:00Z",
+      "reservationId": 1,
+      "paymentMethod": "card"
+    }
+  ]
+}

@@ -12,18 +12,13 @@ export default function Home() {
     queryFn: dishes.getDishes,
   });
   return (
-    <main className=" space-y-6 p-4">
+    <main className="w-full h-screen space-y-6 p-4 overflow-y-scroll">
       <div className="flex flex-col gap-4">
         {dishesData.isSuccess ? (
           dishesData.data.map((data, index) => <Dish {...data} key={index} />)
         ) : (
           <p>Could not find your meals</p>
         )}
-      </div>
-
-      <div className="w-[800px]">
-        <NavBar />
-        <Footer />
       </div>
     </main>
   );

@@ -17,7 +17,7 @@ const IconButton = ({ state, title, link }: ButtonProps) => {
   return (
     <div
       className={clsx(
-        "px-2 py-[6px] rounded-full flex items-center gap-2",
+        "px-2 py-[6px] rounded-full flex items-center gap-2  h-fit",
         state === "white"
           ? "bg-[var(--primary)] text-black"
           : "outline outline-[var(--primary)] text-[var(--primary)]"
@@ -26,7 +26,7 @@ const IconButton = ({ state, title, link }: ButtonProps) => {
       {link ? (
         <>
           <Link href={link}>
-            <p>{title}</p>
+            <p className="text-nowrap">{title}</p>
           </Link>
           <ArrowRightIcon
             size={24}
@@ -38,7 +38,7 @@ const IconButton = ({ state, title, link }: ButtonProps) => {
         </>
       ) : (
         <>
-          <p>{title}</p>
+          <p className="text-nowrap">{title}</p>
           <ArrowRightIcon
             size={24}
             className={clsx(

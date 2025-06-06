@@ -36,6 +36,7 @@ export default function Components() {
             special: true,
             link: "/",
             img: "/dish/food1.webp",
+            restaurantId: 1,
           },
           {
             id: 2,
@@ -50,6 +51,7 @@ export default function Components() {
             special: false,
             link: "/",
             img: "/dish/food2.webp",
+            restaurantId: 1,
           },
         ].map((data, index) => (
           <Dish {...data} key={index} />
