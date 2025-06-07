@@ -10,6 +10,7 @@ import {
   XCircleIcon,
 } from "@phosphor-icons/react";
 import { XIcon } from "@phosphor-icons/react/dist/ssr";
+import CartItem from "./CartItem";
 
 export default function CartModal() {
   const {
@@ -44,40 +45,41 @@ export default function CartModal() {
         ) : (
           <div className="space-y-4">
             {cart.map((item) => (
-              <div key={item.dish.id} className="border-b pb-3">
-                <div className="flex justify-between items-center relative">
-                  <div className="flex gap-2 items-center">
-                    <img
-                      src={item.dish.imageUrl}
-                      alt="dish"
-                      className="w-32 h-24 object-cover rounded-xl bg-gray-200"
-                    />
-                    <div className="flex flex-col">
-                      <h6>{item.dish.name}</h6>
-                      <p>{item.dish.description?.substring(0, 50)}...</p>
-                      <p>{item.dish.price} FCFA</p>
-                      <div className="flex gap-2 mt-1 items-center">
-                        <button onClick={() => decrementItem(item.dish.id)}>
-                          <MinusCircleIcon size={32} />
-                        </button>
-                        <h6>{item.quantity}</h6>
-                        <button onClick={() => incrementItem(item.dish.id)}>
-                          <PlusCircleIcon size={32} />
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <button
-                      className="ml-4 text-red-600 text-sm underline absolute top-0 right-0"
-                      onClick={() => removeItem(item.dish.id)}
-                    >
-                      <XIcon size={20} color="red" />
-                    </button>
-                    <p>{item.dish.price * item.quantity} FCFA</p>
-                  </div>
-                </div>
-              </div>
+              // <div key={item.dish.id} className="border-b pb-3">
+              //   <div className="flex justify-between items-center relative">
+              //     <div className="flex gap-2 items-center">
+              //       <img
+              //         src={item.dish.imageUrl}
+              //         alt="dish"
+              //         className="w-32 h-24 object-cover rounded-xl bg-gray-200"
+              //       />
+              //       <div className="flex flex-col">
+              //         <h6>{item.dish.name}</h6>
+              //         <p>{item.dish.description?.substring(0, 50)}...</p>
+              //         <p>{item.dish.price} FCFA</p>
+              //         <div className="flex gap-2 mt-1 items-center">
+              //           <button onClick={() => decrementItem(item.dish.id)}>
+              //             <MinusCircleIcon size={32} />
+              //           </button>
+              //           <h6>{item.quantity}</h6>
+              //           <button onClick={() => incrementItem(item.dish.id)}>
+              //             <PlusCircleIcon size={32} />
+              //           </button>
+              //         </div>
+              //       </div>
+              //     </div>
+              //     <div>
+              //       <button
+              //         className="ml-4 text-red-600 text-sm underline absolute top-0 right-0"
+              //         onClick={() => removeItem(item.dish.id)}
+              //       >
+              //         <XIcon size={20} color="red" />
+              //       </button>
+              //       <p>{item.dish.price * item.quantity} FCFA</p>
+              //     </div>
+              //   </div>
+              // </div>
+              <CartItem {...item} />
             ))}
 
             <div className="text-right font-bold mt-4">Total: {total} FCFA</div>

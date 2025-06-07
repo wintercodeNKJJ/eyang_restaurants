@@ -35,13 +35,13 @@ const Dish = (dish: DishT) => {
             {offer ? (
               <>
                 <p className=" line-through text-[var(--secondary)]">
-                  {price} XAF
+                  {price} FCFA
                 </p>
-                <p>{offer} XAF</p>
+                <p>{offer} FCFA</p>
               </>
             ) : (
               <>
-                <p>{price}XAF</p>
+                <p>{price}FCFA</p>
               </>
             )}
           </span>

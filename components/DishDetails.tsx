@@ -45,13 +45,13 @@ const DishDetails = (data: Dish) => {
             {data.offer ? (
               <>
                 <p className=" line-through text-[var(--secondary)]">
-                  {data.price} XAF
+                  {data.price} FCFA
                 </p>
-                <p>{data.offer} XAF</p>
+                <p>{data.offer} FCFA</p>
               </>
             ) : (
               <>
-                <p>{data.price}XAF</p>
+                <p>{data.price}FCFA</p>
               </>
             )}
           </span>
