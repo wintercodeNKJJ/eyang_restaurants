@@ -108,6 +108,9 @@ h1,h2,h3,h4,h5,h6 {
   a{
     @apply hover:text-[var(--primary)]
   }
+  input{
+    @apply p-4 bg-[var(--primary)]/20 rounded-full
+  }
 }
 
 /* scrool bar */

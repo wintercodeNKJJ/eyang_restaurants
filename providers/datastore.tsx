@@ -14,6 +14,7 @@ import { create } from "zustand";
 type Store = {
   user: User | null;
   setUser: (user: User) => void;
+  logout: () => void;
   newsLetter: NewsLetter[];
   setNewsLetter: (newsLetter: NewsLetter[]) => void;
   restaurant: Restaurant[];
@@ -41,11 +42,34 @@ type Store = {
   getTotal: () => number;
 
   setCart: (cart: CartItem[]) => void;
+
+  // auth modal
+
+  mode: "login" | "register" | null;
+  isAuthOpen: boolean;
+  openModal: (mode: "login" | "register") => void;
+  closeModal: () => void;
+
+  // Restaurant
+  selectedRes: Partial<Restaurant> | null;
+  setSelectedRes: (restaurant: Partial<Restaurant>) => void;
+  clearSelectedRes: () => void;
+
+  // Dish
+  selectedDish: Partial<Dish> | null;
+  setSelectedDish: (restaurant: Partial<Dish>) => void;
+  clearSelectedDish: () => void;
+
+  // Ord
+  selectedOrd: Partial<Order> | null;
+  setSelectedOrd: (restaurant: Partial<Order>) => void;
+  clearSelectedOrd: () => void;
 };
 
 export const useStore = create<Store>()((set, get) => ({
   user: null,
   setUser: (user) => set(() => ({ user })),
+  logout: () => set({ user: null }),
   newsLetter: [],
   setNewsLetter: (newsLetter) => set(() => ({ newsLetter })),
   restaurant: [],
@@ -110,4 +134,27 @@ export const useStore = create<Store>()((set, get) => ({
     ),
 
   setCart: (cart) => set(() => ({ cart })),
+
+  // auth modal
+
+  mode: null,
+  isAuthOpen: false,
+  openModal: (mode) => set({ mode, isAuthOpen: true }),
+  closeModal: () => set({ mode: null, isAuthOpen: false }),
+
+  // restaurant stor
+
+  selectedRes: null,
+  setSelectedRes: (restaurant) => set({ selectedRes: restaurant }),
+  clearSelectedRes: () => set({ selectedRes: null }),
+
+  // Dish
+  selectedDish: null,
+  setSelectedDish: (res) => set({ selectedRes: res }),
+  clearSelectedDish: () => set({ selectedRes: null }),
+
+  // Ord
+  selectedOrd: null,
+  setSelectedOrd: (order) => set({ selectedOrd: order }),
+  clearSelectedOrd: () => set({ selectedOrd: null }),
 }));

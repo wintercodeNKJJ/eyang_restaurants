@@ -10,14 +10,14 @@ import { useStore } from "@/providers/datastore";
 import Link from "next/link";
 
 const NavBar = () => {
-  const toggleCart = useStore((s) => s.toggleCart);
+  const { toggleCart, openModal } = useStore();
 
   return (
     <nav className="w-fit p-2 rounded-full bg-white flex gap-2">
       <i className="p-2 text-black">
         <ListIcon size={24} />
       </i>
-      <i className="p-2 text-black">
+      <i className="p-2 text-black" onClick={() => openModal("login")}>
         <UserCircleIcon size={24} />
       </i>
       <i className="p-2 cursor-pointer text-black" onClick={toggleCart}>

@@ -34,7 +34,7 @@ export class DishesQuery {
       });
   };
 
-  createDish = async (dish: Dish): Promise<Dish[]> => {
+  createDish = async (dish: Partial<Dish>): Promise<Dish[]> => {
     return axios
       .post(`${process.env.NEXT_PUBLIC_API}/dish/`, dish)
       .then((response) => {

@@ -30,7 +30,7 @@ export class UserQuery {
       });
   };
 
-  createUser = async (user: User): Promise<User> => {
+  createUser = async (user: Omit<User, "id">): Promise<User> => {
     return axios
       .post(`${process.env.NEXT_PUBLIC_API}/user/`, user)
       .then((response) => {

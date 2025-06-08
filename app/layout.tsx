@@ -6,6 +6,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import queryClient from "@/providers/queryProvider";
 import PageHead from "@/components/base/pageHead";
 import CartModal from "@/components/Cart";
+import AuthModal from "@/components/modals/AuthModal";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,6 +25,7 @@ export default function RootLayout({
           <NotificationProvider>
             <PageHead>{children}</PageHead>
             <CartModal />
+            <AuthModal />
           </NotificationProvider>
         </QueryProvider>
       </body>
