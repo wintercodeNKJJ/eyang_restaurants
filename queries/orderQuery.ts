@@ -30,7 +30,7 @@ export class OrderQuery {
       });
   };
 
-  createOrder = async (order: Order): Promise<Order> => {
+  createOrder = async (order: Partial<Order>): Promise<Order> => {
     return axios
       .post(`${process.env.NEXT_PUBLIC_API}/order/`, order)
       .then((response) => {
@@ -44,7 +44,7 @@ export class OrderQuery {
 
   updateOrder = async (order: Order): Promise<Order> => {
     return axios
-      .put(`${process.env.NEXT_PUBLIC_API}/order/${order.id}`, order)
+      .put(`${process.env.NEXT_PUBLIC_API}/order?id=${order.id}`, order)
       .then((response) => {
         toast.success(`Order updated successfully`);
         return response.data;
@@ -56,7 +56,7 @@ export class OrderQuery {
 
   deleteOrder = async (id: number): Promise<Order> => {
     return axios
-      .delete(`${process.env.NEXT_PUBLIC_API}/order/${id}`)
+      .delete(`${process.env.NEXT_PUBLIC_API}/order?id=${id}`)
       .then((response) => {
         toast.success(`Order deleted successfully`);
         return response.data;

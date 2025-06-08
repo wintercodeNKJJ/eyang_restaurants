@@ -17,3 +17,18 @@ const reservations: Reservation[] = [
 export async function GET(request: NextRequest) {
   return NextResponse.json(reservations);
 }
+
+export async function POST(request: NextRequest) {
+  console.log(request.body);
+  return NextResponse.json(reservations);
+}
+
+export async function PUT(request: NextRequest) {
+  console.log(request.body);
+  return NextResponse.json(reservations);
+}
+
+export async function DELETE(request: NextRequest) {
+  console.log(request.body);
+  return NextResponse.json(reservations);
+}

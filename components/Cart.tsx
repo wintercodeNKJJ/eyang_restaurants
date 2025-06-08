@@ -2,26 +2,20 @@
 "use client";
 
 import { useStore } from "@/providers/datastore";
-import {
-  MinusCircleIcon,
-  PlusCircleIcon,
-  ShoppingCartIcon,
-  TrashIcon,
-  XCircleIcon,
-} from "@phosphor-icons/react";
-import { XIcon } from "@phosphor-icons/react/dist/ssr";
+import { ShoppingCartIcon, XCircleIcon } from "@phosphor-icons/react";
 import CartItem from "./CartItem";
+import { OrderQuery } from "@/queries/orderQuery";
+import { useMutation } from "@tanstack/react-query";
+import { toast } from "react-toastify";
+import { Order } from "@/types/dataTypes";
 
 export default function CartModal() {
-  const {
-    isOpen,
-    closeCart,
-    cart,
-    incrementItem,
-    decrementItem,
-    getTotal,
-    removeItem,
-  } = useStore();
+  const { isOpen, closeCart, cart, getTotal } = useStore();
+
+  const orderQuery = new OrderQuery();
+  const orderMutation = useMutation({
+    mutationFn: (data: Partial<Order>) => orderQuery.createOrder(data),
+  });
 
   if (!isOpen) return null;
 
@@ -45,40 +39,6 @@ export default function CartModal() {
         ) : (
           <div className="space-y-4">
             {cart.map((item) => (
-              // <div key={item.dish.id} className="border-b pb-3">
-              //   <div className="flex justify-between items-center relative">
-              //     <div className="flex gap-2 items-center">
-              //       <img
-              //         src={item.dish.imageUrl}
-              //         alt="dish"
-              //         className="w-32 h-24 object-cover rounded-xl bg-gray-200"
-              //       />
-              //       <div className="flex flex-col">
-              //         <h6>{item.dish.name}</h6>
-              //         <p>{item.dish.description?.substring(0, 50)}...</p>
-              //         <p>{item.dish.price} FCFA</p>
-              //         <div className="flex gap-2 mt-1 items-center">
-              //           <button onClick={() => decrementItem(item.dish.id)}>
-              //             <MinusCircleIcon size={32} />
-              //           </button>
-              //           <h6>{item.quantity}</h6>
-              //           <button onClick={() => incrementItem(item.dish.id)}>
-              //             <PlusCircleIcon size={32} />
-              //           </button>
-              //         </div>
-              //       </div>
-              //     </div>
-              //     <div>
-              //       <button
-              //         className="ml-4 text-red-600 text-sm underline absolute top-0 right-0"
-              //         onClick={() => removeItem(item.dish.id)}
-              //       >
-              //         <XIcon size={20} color="red" />
-              //       </button>
-              //       <p>{item.dish.price * item.quantity} FCFA</p>
-              //     </div>
-              //   </div>
-              // </div>
               <CartItem {...item} />
             ))}
 
@@ -113,7 +73,19 @@ export default function CartModal() {
               ></textarea>
             </div>
 
-            <button className="bg-green-600 text-white px-4 py-2 rounded w-full mt-6 hover:bg-green-700">
+            <button
+              className="bg-green-600 text-white px-4 py-2 rounded w-full mt-6 hover:bg-green-700"
+              onClick={() =>
+                orderMutation.mutate({
+                  userId: 1,
+                  items: cart,
+                  totalAmount: total,
+                  status: "pending",
+                  createdAt: new Date().toUTCString(),
+                  paymentMethod: "cash",
+                })
+              }
+            >
               Submit Order & Print Ticket
             </button>
 

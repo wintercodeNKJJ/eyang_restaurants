@@ -84,7 +84,7 @@ export default function ManageOrdersPage() {
       ) : (
         <table className="w-full border mt-4">
           <thead>
-            <tr className="bg-gray-100">
+            <tr className="">
               <th className="border px-4 py-2">Order #</th>
               <th className="border px-4 py-2">User ID</th>
               <th className="border px-4 py-2">Table</th>

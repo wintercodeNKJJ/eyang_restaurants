@@ -81,3 +81,41 @@ const orders: Order[] = [
 export async function GET(request: NextRequest) {
   return NextResponse.json(orders);
 }
+
+export async function POST(request: NextRequest) {
+  const order = await request.json();
+  if (order) {
+    const lastOrder = orders.length > 0 ? orders[orders.length - 1] : undefined;
+    orders.push({ id: lastOrder ? lastOrder.id + 1 : 1, ...order });
+  }
+  return NextResponse.json(order);
+}
+
+export async function PUT(request: NextRequest) {
+  const neworder = await request.json();
+  const id = request.nextUrl.searchParams.get("id");
+  if (id) {
+    const order = orders.map((x) => {
+      if (x.id == parseInt(id)) {
+        x.status = neworder.status;
+      }
+    });
+    console.log(order);
+    console.log(orders);
+    return NextResponse.json(order);
+  }
+  console.log(orders);
+  return NextResponse.json({ error: "notfound" });
+}
+
+export async function DELETE(request: NextRequest) {
+  const id = request.nextUrl.searchParams.get("id");
+  if (id) {
+    const order = orders.find((x) => x.id === parseInt(id));
+    console.log(order);
+    console.log(orders);
+    return NextResponse.json(order);
+  }
+  console.log(orders);
+  return NextResponse.json({ error: "notfound" });
+}

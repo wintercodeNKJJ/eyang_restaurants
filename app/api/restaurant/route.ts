@@ -102,6 +102,22 @@ const restaurant: Restaurant[] = [
     ],
   },
 ];
+
 export async function GET(request: NextRequest) {
+  return NextResponse.json(restaurant);
+}
+
+export async function POST(request: NextRequest) {
+  console.log(request.body);
+  return NextResponse.json(restaurant);
+}
+
+export async function PUT(request: NextRequest) {
+  console.log(request.body);
+  return NextResponse.json(restaurant);
+}
+
+export async function DELETE(request: NextRequest) {
+  console.log(request.body);
   return NextResponse.json(restaurant);
 }

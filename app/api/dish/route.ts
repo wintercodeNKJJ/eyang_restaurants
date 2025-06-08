@@ -28,3 +28,18 @@ export async function GET(request: NextRequest) {
   }
   return NextResponse.json(dish);
 }
+
+export async function POST(request: NextRequest) {
+  const dish = request.body;
+  console.log(dish);
+}
+
+export async function PUT(request: NextRequest) {
+  const dish = request.body;
+  console.log(dish);
+}
+
+export async function DELETE(request: NextRequest) {
+  const dish = request.body;
+  console.log(dish);
+}
