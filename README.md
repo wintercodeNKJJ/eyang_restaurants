@@ -1,6 +1,109 @@
-# **Eyang Restaurants**
+# 🍽️ **Eyang Restaurants**
 
-A modern restaurant web application built using **Next.js 13+ (App Router)**, TypeScript, and a modular folder structure. The app supports booking, dish ordering, and user management.
+A modern restaurant web application built using **Next.js 13+ App Router**, **TypeScript**, and a clean modular folder structure. The app provides functionality for **dish ordering**, **table reservations**, and **user management** for both customers and admins.
+
+---
+
+## 📊 Project Lifecycle & Development Phases
+
+The development of the Eyang Restaurant web application followed a structured Software Development Lifecycle (SDLC) composed of several key phases:
+
+---
+
+### 🧠 1. **Requirements Analysis**
+
+We started by understanding the needs of the client and the typical restaurant operations. The key modules identified were:
+
+- **Menu Browsing**
+- **Online Reservations**
+- **Food Ordering**
+- **Admin Dashboard (for orders, dishes, and users)**
+
+**📎 _Placeholder: Functional requirements diagram_**
+`[Insert use case diagram here]`
+
+---
+
+### 🧾 2. **Planning & Architecture Design**
+
+The system architecture was mapped out, choosing **Next.js (App Router)** for the front end, and planning future extensibility for backend and database layers.
+
+We also defined:
+
+- API structure
+- Component layout
+- Folder hierarchy for maintainability
+
+**📎 System architecture diagram\_**
+![Insert architecture diagram showing Next.js structure, API endpoints, data flow]`
+
+**📎 Entity Relationship Diagram (ERD)\_**
+![Insert ER diagram showing Dish, Order, User, Restaurant, etc.](https://i.ibb.co/KcGj4Ksb/Happy-Meal-Robine-Ninone-Restauran-Website-Database-of-the-website-drawio.png)
+
+---
+
+### 🎨 3. **UI/UX Design**
+
+Low-fidelity wireframes were created and later turned into reusable UI components in the `/components` folder. A mobile-first, clean user interface was prioritized.
+
+- Components include: `Navbar`, `DishCard`, `ReservationForm`, etc.
+
+**📎 Wireframe mockups (Homepage, Menu, Booking)\_**
+![UI wireframes here](https://i.ibb.co/Q7SKgxjp/Happy-Meal-Robine-Ninone-Restauran-Website-Site-map-drawio.png)
+
+---
+
+### 🛠️ 4. **Development**
+
+The app was built using **TypeScript**, **Next.js App Router**, and **TailwindCSS** for styling. We used **React Context (via providers)** and **React Query** for data fetching and caching.
+
+API routes were created in `/app/api/`, supporting:
+
+- Dishes (`/api/dish`)
+- Orders (`/api/order`)
+- Reservations (`/api/reservation`)
+- Users (`/api/user`)
+- Newsletter Subscriptions (`/api/newsletter`)
+
+Real-time-like feedback was enabled using **React Toastify**.
+
+---
+
+### ✅ 5. **Testing**
+
+- All features were manually tested to ensure usability across mobile and desktop.
+- Booking and ordering flows were verified using mock user scenarios.
+- TypeScript helped with compile-time checks and reliability.
+
+---
+
+### 🚀 6. **Deployment & Delivery**
+
+The app is ready for deployment on **Vercel** or any Node-compatible hosting provider. Environment variables can be managed via `.env`.
+
+A CI/CD pipeline can be integrated to streamline deployment.
+
+---
+
+## 🧰 Tech Stack
+
+- **Framework**: Next.js 13+ (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **State Management**: React Context + Zustand (if needed)
+- **Data Fetching**: React Query
+- **Notifications**: React Toastify
+- **Database**: (Pending backend integration, e.g., PostgreSQL or Firebase)
+
+---
+
+## 📌 Key Features Recap
+
+- Browse dishes with images, description, and pricing
+- Make a table reservation
+- Place an order online
+- Admin dashboard for managing orders, dishes, and users
+- Responsive design for mobile and desktop
 
 ---
 
