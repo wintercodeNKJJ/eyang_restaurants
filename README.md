@@ -38,7 +38,10 @@ We also defined:
 ![Insert architecture diagram showing Next.js structure, API endpoints, data flow]`
 
 **📎 Entity Relationship Diagram (ERD)\_**
-![Database](https://i.ibb.co/KcGj4Ksb/Happy-Meal-Robine-Ninone-Restauran-Website-Database-of-the-website-drawio.png)
+
+<!-- ![Database](https://i.ibb.co/KcGj4Ksb/Happy-Meal-Robine-Ninone-Restauran-Website-Database-of-the-website-drawio.png) -->
+
+![Database](<./img/Happy%20Meal(Robine%20Ninone%20Restauran%20Website)-Database%20of%20the%20website.drawio.png>)
 
 ---
 
@@ -49,7 +52,10 @@ Low-fidelity wireframes were created and later turned into reusable UI component
 - Components include: `Navbar`, `DishCard`, `ReservationForm`, etc.
 
 **📎 Wireframe mockups (Homepage, Menu, Booking)\_**
-![UI wireframes here](https://i.ibb.co/Q7SKgxjp/Happy-Meal-Robine-Ninone-Restauran-Website-Site-map-drawio.png)
+
+<!-- ![UI wireframes here](https://i.ibb.co/Q7SKgxjp/Happy-Meal-Robine-Ninone-Restauran-Website-Site-map-drawio.png) -->
+
+![UI wireframes here](<./img/Happy%20Meal(Robine%20Ninone%20Restauran%20Website)-Site%20map.drawio.png>)
 
 ---
 
