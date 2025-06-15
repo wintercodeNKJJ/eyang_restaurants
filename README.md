@@ -38,7 +38,7 @@ We also defined:
 ![Insert architecture diagram showing Next.js structure, API endpoints, data flow]`
 
 **📎 Entity Relationship Diagram (ERD)\_**
-![Insert ER diagram showing Dish, Order, User, Restaurant, etc.](https://i.ibb.co/KcGj4Ksb/Happy-Meal-Robine-Ninone-Restauran-Website-Database-of-the-website-drawio.png)
+![Database](https://i.ibb.co/KcGj4Ksb/Happy-Meal-Robine-Ninone-Restauran-Website-Database-of-the-website-drawio.png)
 
 ---
 
